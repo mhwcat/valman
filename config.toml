@@ -1,0 +1,11 @@
+server_address = "0.0.0.0:9999"
+docker_socket_path = "/var/run/docker.sock"
+container_name = "valheim"
+template_path = "templates/main.html"
+valheim_server_address = "127.0.0.1:2457"
+valheim_backups_path = "backups/"
+valheim_backups_destination_path = "volumes/valheim/saves/"
+restart_delay_seconds = 60
+last_log_lines_count = 100
+username = "admin"
+password = "pass"

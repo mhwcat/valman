@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/pico.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon/hammer-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon/hammer-32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon/hammer-96.png">
+    <title>valman</title>
+  </head>
+  <body>
+      <nav class="container-fluid">
+        <ul>
+            <li><img src="static/img/icons8-hammer-64.png" style="max-height: 24pt;"></li>
+            <li><strong>valman</strong></li>
+        </ul>
+        <ul>
+          <li><small style="font-size: 10pt;">Version: %version%</small></li>
+        </ul>
+      </nav>
+    <main class="container">
+      <section>
+        <h3>Status</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Container status</th>
+              <th scope="col">Container uptime</th>
+              <th scope="col">Valheim version</th>
+              <th scope="col">Player count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="static/img/icons8-%container_status_img%-48.png" style="max-width: 32px;"> %container_status%</td>
+              <td>%container_uptime%</td>
+              <td>%server_version%</td>
+              <td>%player_count%</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- <section>
+        <h3>Players</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              %players%
+            </tr>
+          </tbody>
+        </table>
+      </section> -->
+      <section>
+        <h3>Management</h3>
+        <div class="grid">
+          <div>
+            %restart_btn%
+          </div>
+          <div><small style="line-height: 64px;">Last restart at %last_restart_time%</small></div>
+        </div>
+      </section>
+      <section>
+        <h3>Backups</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">File name</th>
+              <th scope="col">Creation time</th>
+              <th scope="col">Size</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>          
+          <tbody>
+            %backups%
+          </tbody>
+        </table>
+      </section>      
+      <section>
+        <h3>Logs</h3>
+        <textarea id="logs" readonly style="overflow-y: scroll; height: 300px; font-family: monospace; font-size: small;">%server_logs%</textarea>
+      </section>
+    </main>
+    <footer class="container">
+      <div class="grid">
+        <div><small>Render time: %render_time%ms</small></div>
+        
+        <div style="text-align: right;"><small><a href="https://icons8.com/">Icons from icons8</a></small></div>
+      </div>
+    </footer>
+    <script type="text/javascript">
+      window.onload = (event) => {
+        var textarea = document.getElementById('logs');
+        textarea.scrollTop = textarea.scrollHeight;
+
+        var restart_btn = document.getElementById('restart-btn');
+        restart_btn.onclick = () => {
+          restart_btn.parentNode.removeChild(restart_btn);
+        };
+
+        var restore_btns = document.querySelectorAll('.restore-btn');
+        for (i = 0; i < restore_btns.length; i++) {
+          var restore_btn = restore_btns[i];
+
+          restore_btn.onclick = () => {
+            for (j = 0; j < restore_btns.length; j++) {
+              var restore_btn_internal = restore_btns[j];
+              
+              restore_btn_internal.parentNode.removeChild(restore_btn_internal);
+            }
+
+            restart_btn.parentNode.removeChild(restart_btn);
+          };
+        }
+      };
+    </script>
+  </body>
+</html>
