@@ -1,6 +1,6 @@
 # ![valman logo](static/img/favicon/hammer-16.png) valman
-Dashboard for managing dockerized Valheim dedicated server.  
-Works with excellent [mbround18/valheim-docker](https://github.com/mbround18/valheim-docker).
+![Build status](https://github.com/mhwcat/valman/actions/workflows/build.yml/badge.svg)  
+Dashboard for managing dockerized Valheim dedicated server. Works with excellent [mbround18/valheim-docker](https://github.com/mbround18/valheim-docker).
 ## Building
 [Install Rustlang](https://www.rust-lang.org/tools/install).
 Build release version:
